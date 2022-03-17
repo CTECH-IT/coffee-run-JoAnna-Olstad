@@ -14,7 +14,26 @@
             throw new Error('Could not find element with selector: ' + selector);
         }
     }
-    
+    // Add an event handler for the submit button and pass in createOrder as a parameter (func)
+    FormHandler.prototype.addSubmitHandler = function (func) {
+        console.log('Setting the submit handler for the form...');
+        this.$formElement.on('submit', function (event) {
+            event.preventDefault();
+
+            // copy all the info from the form fields into the variable called data
+            let data = {};
+            $(this).serializeArray().forEach(function (item) {
+                data[item.name] = item.value;
+                console.log(item.name + ' is ' + item.value)
+            });
+            console.log(data);
+            func(data); // call the function that was passed in on the data from the form
+
+            this.reset(); // reset the form
+            this.elements[0].focus; // focus on the first field
+        });
+    }
+
     App.FormHandler = FormHandler;
     window.App = App;
 
