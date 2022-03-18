@@ -27,6 +27,7 @@
               <label for="coffeeOrder">Coffee Order</label>
               <input class="form-control" name="coffee" id="coffeeOrder" autofocus>
             </div>
+          </form>
             <div class="form-group">
               <label for="emailInput">Email</label>
               <input class="form-control" type="email" name="emailAddress" id="emailInput" value=""
@@ -60,15 +61,6 @@
                 <option value="mocha">Mocha</option>
               </select>
             </div>
-            <!-- the checklist -->
-            <div class="card card-default">
-              <div class="card-body">
-                <h4>Pending Orders:</h4>
-                <div data-coffee-order="checklist">
-                </div>
-              </div>
-            </div>
-
             <div class="form-group">
               <label for="strengthLevel">Strength</label>
               <input name="strength" id="strengthLevel" type="range" class="form-control-range" value="30">
@@ -76,6 +68,14 @@
             <button type="submit" class="btn btn-primary">Submit</button>
             <button type="reset" class="btn btn-secondary">Reset</button>
           </form>
+        </div>
+      </div>
+      <!-- the checklist -->
+      <div class="card card-default">
+        <div class="card-body">
+          <h4>Pending Orders:</h4>
+          <div data-coffee-order="checklist">
+          </div>
         </div>
       </div>
     </section>
