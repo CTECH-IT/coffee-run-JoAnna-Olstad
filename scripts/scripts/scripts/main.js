@@ -10,6 +10,7 @@
     let DataStore = App.DataStore;
     let FormHandler = App.FormHandler;
     let CheckList = App.CheckList;
+    let Validation = App.Validation;
 
     let myTruck = new Truck('12345', new DataStore());
     let checkList = new CheckList(CHECKLIST_SELECTOR);
@@ -27,5 +28,8 @@
         myTruck.createOrder.call(myTruck, data);
         checkList.addRow.call(checkList, data);
     });
+
+    // add the email validator to the email input field
+    formHandler.addInputHandler(Validation.isCompanyEmail);
 
 })(window);
