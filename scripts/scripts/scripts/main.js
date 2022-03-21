@@ -16,6 +16,9 @@
 
     window.myTruck = myTruck;
 
+    //when the checklist is clicked, call "deliverOrder" on myTruck
+    checkList.addClickHandler(myTruck.deliverOrder.bind(myTruck));
+
     // find the form that is being submitted and create a formHandler object
     let formHandler = new FormHandler(FORM_SELECTOR);
     

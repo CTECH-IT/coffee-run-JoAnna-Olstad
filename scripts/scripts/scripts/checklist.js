@@ -13,11 +13,31 @@
     }
 
     // The method that adds a new role to the checklist
-    Checklist.prototype.addRow = function (coffeeOrder) {
+    CheckList.prototype.addRow = function (coffeeOrder) {
+        // Remove any existing rows that match the meail address
+        this.removeRow(coffeeOrder.emailAddress);
         // Create a new instance of a row, using the coffee order info
         var rowElement = new Row(coffeeOrder);
         // Add the new row instance's $element property to the checklist
         this.$element.append(rowElement.$element);
+    };
+
+    // remove a row identified by an email address
+    CheckList.prototype.removeRow = function (email) {
+        this.$element
+            .find('[value="' + email + '"]')
+            .closest('[data-coffee-order="checkbox"]')
+            .remove();
+    };
+
+    // when the checkbox is clicked, get the email address from the row
+    // and then call the function (func) that is passed in with the email address as a parameter
+    CheckList.prototype.addClickHandler = function (func) {
+        this.$element.on('click', 'input', function (event) {
+            var email = event.target.value;
+            this.removeRow(email);
+            func(email);
+        }.bind(this));
     };
 
     // Each row is one outstanding order
