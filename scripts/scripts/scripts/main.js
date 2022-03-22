@@ -3,16 +3,21 @@
 
     const FORM_SELECTOR = '[data-coffee-order="form"]';
     const CHECKLIST_SELECTOR = '[data-coffee-order="checkList"]';
+    const SERVER_URL = 'https://saturn.rochesterschools.org:8000/json';
 
     // let's make sure we only have one of each of these:
     let App = window.App;
     let Truck = App.Truck;
     let DataStore = App.DataStore;
+    let RemoteDataStore = App.RemoteDataStore;
     let FormHandler = App.FormHandler;
     let CheckList = App.CheckList;
     let Validation = App.Validation;
 
-    let myTruck = new Truck('12345', new DataStore());
+    // the remote database where we store orders
+    let remoteDS = new RemoteDataStore(SERVER_URL);
+
+    let myTruck = new Truck('12345', remoteDS);
     let checkList = new CheckList(CHECKLIST_SELECTOR);
 
     window.myTruck = myTruck;
